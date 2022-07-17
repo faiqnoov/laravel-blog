@@ -19,19 +19,18 @@ class Post
         ],
     ];
 
-    public static function all() {
-        return self::$blog_posts;
+    public static function all()
+    {
+        // self:: -> utk mengambil data dari property static
+        // collection
+        return collect(self::$blog_posts);
     }
 
-    public static function find($slug) {
-        $posts = self::$blog_posts;
-        $post = [];
-        foreach($posts as $p) {
-            if($p["slug"] === $slug) {
-                $post = $p;
-            }
-        }
-
-        return $post;
+    public static function find($slug)
+    {
+        // static:: -> utk mengambil data dari method static
+        // $posts sudah berupa collection, karena mengambil data dari method all()
+        $posts = static::all();
+        return $posts->firstWhere('slug', $slug);
     }
 }

@@ -33,4 +33,5 @@ Route::get('/about', function () {
 
 // using CONTROLLER
 Route::get('/posts', [PostController::class, 'index']);
-Route::get('/posts/{slug}', [PostController::class, 'show']);
+// route model binding
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);

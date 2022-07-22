@@ -12,6 +12,8 @@ class Post extends Model
     // Mass Assignment (2 cara, $fillable / $guarded)
     // protected $fillable = ['title', 'excerpt', 'body'];
     protected $guarded = ['id'];
+    // Eager Loading
+    protected $with = ['author', 'category'];
 
     public function category()
     {

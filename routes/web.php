@@ -47,21 +47,3 @@ Route::get('/categories', function () {
         'categories' => Category::all()
     ]);
 });
-
-Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('posts', [
-        'title' => "Post by Category: $category->name",
-        'active' => 'categories',
-        // Lazy Eager Loading
-        'posts' => $category->posts->load('category', 'author')
-    ]);
-});
-
-Route::get('/authors/{author:username}', function (User $author) {
-    return view('posts', [
-        'title' => "Post by Author: $author->name",
-        'active' => '',
-        // Lazy Eager Loading
-        'posts' => $author->posts->load('category', 'author')
-    ]);
-});

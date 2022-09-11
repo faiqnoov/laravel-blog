@@ -53,4 +53,10 @@ class Post extends Model
         // 'author' alias dari 'user_id'
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    // mengubah default key pada route model binding, yang awalnya id jadi slug
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
